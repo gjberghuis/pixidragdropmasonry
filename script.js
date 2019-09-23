@@ -60,11 +60,13 @@ function _drawText(text, x = window.innerWidth / 2, y = 50, color = '#ff8000') {
     const textSprite = new PIXI.Text(text, { fill: color });
     textSprite.x = 5;
     textSprite.y = 5;
+
     const txtBg = new PIXI.Sprite(PIXI.Texture.WHITE);
     txtBg.width = textSprite.width + 10, txtBg.height = textSprite.height + 10;
 
     const container = new PIXI.Container();
     container.x = x;
+    container.cursor = 'hand';
     container.y = y;
     container.interactive = true;
     container.addChild(txtBg, textSprite);
@@ -133,6 +135,7 @@ function _drawItem(x, y, width, height, color = 0xffffff) {
     itemSprite.x = x;
     itemSprite.y = y;
     itemSprite.interactive = true;
+    itemSprite.cursor = 'wait';
     itemSprite.anchor.set(0.5);  
     itemSprite.position.x = x + (width / 2);    
     itemSprite.position.y = y + (height / 2);
@@ -219,6 +222,7 @@ function onDragEnd()
 
         item.position.x = itemPositionX;
         item.position.y = itemPositionY;
+      
         itemsInContainerOffset.x = item.position.x + item.width;
 
         counter++;
